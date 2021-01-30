@@ -1,20 +1,18 @@
 import React from "react";
 import Command from "../components/Command";
+import findScripts from "../lib/core/findScripts";
 
-const COMMANDS = [
-  {
-    title: "Start windows VM",
-    id: "start_windows_vm",
-  },
-  { title: "Stop windows VM", id: "stop_windows_vm" },
-];
-
-const IndexPage = () => (
+const IndexPage = ({ scripts }) => (
   <main>
-    {COMMANDS.map((command) => (
-      <Command key={command.id} commandId={command.id} title={command.title} />
+    {scripts.map((command) => (
+      <Command key={command.id} commandId={command.id} title={command.name} />
     ))}
   </main>
 );
+
+export const getServerSideProps = async () => {
+  const scripts = await findScripts();
+  return { props: { scripts } };
+};
 
 export default IndexPage;
