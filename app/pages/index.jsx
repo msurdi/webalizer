@@ -12,7 +12,7 @@ const COMMANDS = [
 const IndexPage = () => (
   <main>
     {COMMANDS.map((command) => (
-      <Command commandId={command.id} title={command.title} />
+      <Command key={command.id} commandId={command.id} title={command.title} />
     ))}
   </main>
 );
