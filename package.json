@@ -1,13 +1,28 @@
 {
-  "name": "webrun",
+  "name": "webalizer",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "next dev app",
+    "build": "next build app",
+    "start": "next start -p ${PORT:-3000} -H ${ADDRESS:-127.0.0.1} app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "bin": {
+    "webalizer": "./bin/webalizer.js"
+  },
+  "files": [
+    "app/.next/**",
+    "bin/**",
+    "next.config.js"
+  ],
+  "engines": {
+    "node": ">=14",
+    "npm": ">=6"
+  },
   "devDependencies": {
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -18,5 +33,15 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "execa": "^5.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "next": "^10.0.6",
+    "npm": "^6.14.11",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
