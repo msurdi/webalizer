@@ -1,7 +1,7 @@
-Webalizer
-=========
+# Webalizer
 
-## Intro
-_Work in progress_
+## Intro
 
-Web interface for running server scripts
+This is a _Work in progress_
+
+Web interface for running server scripts on my home server
