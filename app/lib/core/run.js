@@ -1,14 +1,18 @@
 import execa from "execa";
+import logger from "../services/logger";
 import findScripts from "./find-scripts";
 
 const exec = async (command) => {
   try {
-    const { all: output } = await execa(command, {
+    logger.log(`Running command ${command}`);
+    const result = await execa(command, {
       all: true,
       shell: true,
     });
-    return output;
+    logger.log(`Command ${command} finished ${JSON.stringify(result)}`);
+    return result.all;
   } catch (error) {
+    logger.error(`Command ${command} failed ${JSON.stringify(error)}`);
     return error.message;
   }
 };
