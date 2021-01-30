@@ -1,5 +1,5 @@
 import execa from "execa";
-import findScripts from "./findScripts";
+import findScripts from "./find-scripts";
 
 const exec = async (command) => {
   try {

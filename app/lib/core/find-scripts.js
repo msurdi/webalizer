@@ -1,7 +1,7 @@
 import glob from "fast-glob";
 import fs from "fs-extra";
 import path from "path";
-import serverRuntimeConfig from "../serverRuntimeConfig";
+import serverRuntimeConfig from "../server-runtime-config";
 
 const loadConfiguration = async (configurationFile) => {
   const configurationFileAbsolutePath = path.join(

@@ -1,6 +1,6 @@
 import React from "react";
 import Command from "../components/Command";
-import findScripts from "../lib/core/findScripts";
+import findScripts from "../lib/core/find-scripts";
 
 const IndexPage = ({ scripts }) => (
   <main>

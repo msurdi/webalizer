@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useRun from "../hooks/useRun";
+import useRun from "../hooks/use-run";
 
 const Command = ({ title, commandId }) => {
   const run = useRun();

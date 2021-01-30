@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import "express-async-errors";
-import findScripts from "../../lib/core/findScripts";
+import findScripts from "../../lib/core/find-scripts";
 import run from "../../lib/core/run";
 import urls from "../../lib/urls";
 
