@@ -1,0 +1,5 @@
+{
+  "name": "run",
+  "description": "Run a script",
+  "command": "./script.sh"
+}
