@@ -24,7 +24,7 @@ const ScriptListItem = ({ script }) => {
             className="bg-primary hover:bg-primary-light  transition-all duration-200 shadow text-white py-2 px-6 border-gray-400 rounded"
             type="submit"
           >
-            Run
+            {script.button || "Run"}
           </button>
         </form>
       </div>
