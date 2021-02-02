@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     colors: {
       primary: colors.purple[900],
+      "primary-light": colors.purple[700],
       black: colors.black,
       white: colors.white,
       gray: colors.gray,

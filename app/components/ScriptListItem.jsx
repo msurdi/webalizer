@@ -21,7 +21,7 @@ const ScriptListItem = ({ script }) => {
         </section>
         <form onSubmit={handleRunCommandSubmit}>
           <button
-            className="bg-primary text-white py-2 px-6 border-gray-400 rounded"
+            className="bg-primary hover:bg-primary-light  transition-all duration-200 shadow text-white py-2 px-6 border-gray-400 rounded"
             type="submit"
           >
             Run
