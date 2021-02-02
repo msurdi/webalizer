@@ -1,15 +1,16 @@
+import cn from "classnames";
 import React, { useState } from "react";
 import useRun from "../hooks/use-run";
 
 const ScriptListItem = ({ script }) => {
-  const run = useRun();
+  const { run, isRunning } = useRun();
 
   const [output, setOutput] = useState("");
 
   const handleRunCommandSubmit = async (event) => {
     event.preventDefault();
     const result = await run(script.id);
-    setOutput(result);
+    setOutput(result.output);
   };
 
   return (
@@ -21,10 +22,17 @@ const ScriptListItem = ({ script }) => {
         </section>
         <form onSubmit={handleRunCommandSubmit}>
           <button
-            className="bg-primary hover:bg-primary-light  transition-all duration-200 shadow text-white py-2 px-6 border-gray-400 rounded"
+            disabled={isRunning}
+            className={cn(
+              "shadow text-white py-2 px-6 border-gray-400 rounded",
+              {
+                "bg-primary hover:bg-primary-light transition-colors duration-200 ": !isRunning,
+                "bg-gray-400 cursor-not-allowed": isRunning,
+              }
+            )}
             type="submit"
           >
-            {script.button || "Run"}
+            {isRunning ? "Running..." : script.button || "Run"}
           </button>
         </form>
       </div>
