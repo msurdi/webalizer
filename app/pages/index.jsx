@@ -1,13 +1,12 @@
 import React from "react";
-import Command from "../components/Command";
+import Layout from "../components/Layout";
+import ScriptList from "../components/ScriptList";
 import findScripts from "../lib/core/find-scripts";
 
 const IndexPage = ({ scripts }) => (
-  <main>
-    {scripts.map((command) => (
-      <Command key={command.id} commandId={command.id} title={command.name} />
-    ))}
-  </main>
+  <Layout>
+    <ScriptList scripts={scripts} />
+  </Layout>
 );
 
 export const getServerSideProps = async () => {
