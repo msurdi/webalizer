@@ -10,10 +10,10 @@ const exec = async (command, { shell = false } = {}) => {
       shell,
     });
     logger.log(`Command ${command} finished ${JSON.stringify(result)}`);
-    return result.all;
+    return result;
   } catch (error) {
     logger.error(`Command ${command} failed ${JSON.stringify(error)}`);
-    return error.message;
+    throw error;
   }
 };
 
@@ -31,8 +31,7 @@ const run = async (scriptId) => {
     return `Script ${scriptId} has no command configuration`;
   }
 
-  const output = await exec(script.command, { shell: !!script.shell });
-  return output;
+  return exec(script.command, { shell: !!script.shell });
 };
 
 export default run;

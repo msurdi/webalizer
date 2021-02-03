@@ -16,8 +16,8 @@ app.get(urls.scripts(), async (req, res) => {
 
 app.post(urls.run(), async (req, res) => {
   const { command } = req.body;
-  const output = await run(command);
-  return res.send({ output });
+  const result = await run(command);
+  return res.send(result);
 });
 
 export const config = {

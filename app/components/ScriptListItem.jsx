@@ -5,12 +5,12 @@ import useRun from "../hooks/use-run";
 const ScriptListItem = ({ script }) => {
   const { run, isRunning } = useRun();
 
-  const [output, setOutput] = useState("");
+  const [lastRun, setLastRun] = useState({});
 
   const handleRunCommandSubmit = async (event) => {
     event.preventDefault();
     const result = await run(script.id);
-    setOutput(result.output);
+    setLastRun(result);
   };
 
   return (
@@ -36,9 +36,9 @@ const ScriptListItem = ({ script }) => {
           </button>
         </form>
       </div>
-      {output && (
+      {lastRun.all && (
         <section className="my-4 bg-black rounded py-4 px-2">
-          <pre className="font-mono text-sm text-white">{output}</pre>
+          <pre className="font-mono text-sm text-white">{lastRun.all}</pre>
         </section>
       )}
     </div>

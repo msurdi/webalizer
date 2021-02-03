@@ -19,7 +19,7 @@ describe("run", () => {
     it("Returns the script output", async () => {
       const output = await run("echo.json");
 
-      expect(output).toEqual("test output");
+      expect(output).toEqual({ all: "test output" });
     });
 
     it("Executes the command for the given script id", async () => {
