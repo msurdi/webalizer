@@ -10,10 +10,11 @@ const exec = async (command, { shell = false } = {}) => {
       shell,
     });
     logger.log(`Command ${command} finished ${JSON.stringify(result)}`);
-    return result;
+    const { exitCode, all: output, failed } = result;
+    return { exitCode, output, failed };
   } catch (error) {
     logger.error(`Command ${command} failed ${JSON.stringify(error)}`);
-    throw error;
+    return { exitCode: null, output: error.message, failed: true };
   }
 };
 

@@ -13,6 +13,8 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
+      error: colors.red[500],
+      success: colors.green[500],
     },
     extend: {},
   },

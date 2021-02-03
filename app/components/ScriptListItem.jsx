@@ -36,9 +36,14 @@ const ScriptListItem = ({ script }) => {
           </button>
         </form>
       </div>
-      {lastRun.all && (
-        <section className="my-4 bg-black rounded py-4 px-2">
-          <pre className="font-mono text-sm text-white">{lastRun.all}</pre>
+      {lastRun.output && (
+        <section
+          className={cn("my-4 bg-black rounded py-4 px-2", {
+            "border-4 border-error": lastRun.failed,
+            "border-4 border-success": !lastRun.failed,
+          })}
+        >
+          <pre className="font-mono text-sm text-white">{lastRun.output}</pre>
         </section>
       )}
     </div>
