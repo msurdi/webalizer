@@ -16,30 +16,60 @@ describe("run", () => {
   });
 
   describe("Running a script from a script configuration file", () => {
-    let output;
-    beforeEach(async () => {
-      output = await run("echo.json");
-    });
+    it("Returns the script output", async () => {
+      const output = await run("echo.json");
 
-    it("Returns the script output", () => {
       expect(output).toEqual("test output");
     });
 
     it("Executes the command for the given script id", async () => {
+      await run("echo.json");
+
       expect(execa).toHaveBeenCalledWith("./script.sh", {
         all: true,
-        shell: true,
+        shell: false,
       });
     });
 
     it("Logs the name of the script run", async () => {
+      await run("echo.json");
+
       expect(logger.log).toHaveBeenCalledWith("Running command ./script.sh");
     });
 
     it("Logs the output of the script run", async () => {
+      await run("echo.json");
+
       expect(logger.log).toHaveBeenCalledWith(
         'Command ./script.sh finished {"all":"test output"}'
       );
+    });
+
+    describe.each([
+      // [shell, expectedShell]
+      [true, true],
+      [false, false],
+      [undefined, false],
+      [null, false],
+      ["", false],
+    ])("When running a script with shell = %p", (shell, expectedShell) => {
+      beforeEach(() => {
+        findScripts.mockImplementation(() => [
+          { id: "echo.json", command: "./script2.sh", shell },
+        ]);
+        execa.mockImplementation(() => ({ all: "test output" }));
+      });
+
+      it(`Executes the command ${
+        expectedShell ? "with" : "without"
+      } a shell`, async () => {
+        await run("echo.json");
+
+        expect(execa).toHaveBeenCalledWith("./script2.sh", {
+          all: true,
+          shell: expectedShell,
+        });
+      });
     });
   });
 });

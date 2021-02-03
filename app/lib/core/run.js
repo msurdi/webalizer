@@ -2,12 +2,12 @@ import execa from "execa";
 import logger from "../services/logger";
 import findScripts from "./find-scripts";
 
-const exec = async (command) => {
+const exec = async (command, { shell = false } = {}) => {
   try {
     logger.log(`Running command ${command}`);
     const result = await execa(command, {
       all: true,
-      shell: true,
+      shell,
     });
     logger.log(`Command ${command} finished ${JSON.stringify(result)}`);
     return result.all;
@@ -19,19 +19,19 @@ const exec = async (command) => {
 
 const run = async (scriptId) => {
   const scripts = await findScripts();
-  const scriptToRun = scripts.find((script) => script.id === scriptId);
+  const script = scripts.find((s) => s.id === scriptId);
 
-  if (!scriptToRun) {
+  if (!script) {
     return `Script ${scriptId} not found`;
   }
 
-  const { command } = scriptToRun;
+  const { command } = script;
 
   if (!command) {
     return `Script ${scriptId} has no command configuration`;
   }
 
-  const output = await exec(scriptToRun.command);
+  const output = await exec(script.command, { shell: !!script.shell });
   return output;
 };
 
