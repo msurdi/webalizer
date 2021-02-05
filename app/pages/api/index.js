@@ -3,10 +3,12 @@ import express from "express";
 import "express-async-errors";
 import findScripts from "../../lib/core/find-scripts";
 import run from "../../lib/core/run";
+import authMiddleware from "../../lib/middleware/auth";
 import urls from "../../lib/urls";
 
 const app = express();
 
+app.use(authMiddleware);
 app.use(bodyParser.json());
 
 app.get(urls.scripts(), async (req, res) => {

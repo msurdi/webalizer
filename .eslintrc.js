@@ -21,5 +21,6 @@ module.exports = {
   plugins: ["react", "prettier", "jest"],
   rules: {
     "react/prop-types": "off",
+    "jsx-a11y/anchor-is-valid": "off",
   },
 };
