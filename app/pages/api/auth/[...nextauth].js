@@ -3,6 +3,9 @@ import Providers from "next-auth/providers";
 import serverRuntimeConfig from "../../../lib/server-runtime-config";
 
 const options = {
+  pages: {
+    // signIn: "/auth/signin",
+  },
   providers: [
     Providers.Credentials({
       name: "Password",
@@ -12,6 +15,7 @@ const options = {
       },
       authorize: async (credentials) => {
         if (!serverRuntimeConfig.username && !serverRuntimeConfig.password) {
+          throw new Error("ANON");
           // No username and password configures, thus authentication is disabled and every user is 'anonymous'
           return { username: "anonymous" };
         }

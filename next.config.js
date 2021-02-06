@@ -9,6 +9,9 @@ module.exports = {
     username: process.env.USERNAME,
     password: process.env.PASSWORD,
   },
+  publicRuntimeConfig: {
+    isAuthEnabled: !!process.env.USERNAME && !!process.env.PASSWORD,
+  },
   async rewrites() {
     return [
       {
