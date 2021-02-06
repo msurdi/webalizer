@@ -4,7 +4,7 @@ import serverRuntimeConfig from "../../../lib/server-runtime-config";
 
 const options = {
   pages: {
-    // signIn: "/auth/signin",
+    signIn: "/auth/signin",
   },
   providers: [
     Providers.Credentials({
@@ -14,12 +14,6 @@ const options = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        if (!serverRuntimeConfig.username && !serverRuntimeConfig.password) {
-          throw new Error("ANON");
-          // No username and password configures, thus authentication is disabled and every user is 'anonymous'
-          return { username: "anonymous" };
-        }
-
         const { username, password } = credentials;
 
         if (

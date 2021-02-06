@@ -1,6 +1,7 @@
 import cn from "classnames";
 import React, { useState } from "react";
 import useRun from "../hooks/use-run";
+import Button from "./Button";
 
 const ScriptListItem = ({ script }) => {
   const { run, isRunning } = useRun();
@@ -21,19 +22,9 @@ const ScriptListItem = ({ script }) => {
           <p>{script.description}</p>
         </section>
         <form onSubmit={handleRunCommandSubmit}>
-          <button
-            disabled={isRunning}
-            className={cn(
-              "shadow text-white py-2 px-6 border-gray-400 rounded w-full",
-              {
-                "bg-primary hover:bg-primary-light transition-colors duration-200 ": !isRunning,
-                "bg-gray-400 cursor-not-allowed": isRunning,
-              }
-            )}
-            type="submit"
-          >
+          <Button isLoading={isRunning}>
             {isRunning ? "Running..." : script.button || "Run"}
-          </button>
+          </Button>
         </form>
       </div>
       {lastRun.output && (
