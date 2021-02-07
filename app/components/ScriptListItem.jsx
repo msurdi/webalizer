@@ -11,10 +11,14 @@ const ScriptListItem = ({ script }) => {
   const handleRunCommandSubmit = async (event) => {
     event.preventDefault();
     if (script.confirm) {
+      const defaultConfirmationMessage = `Are you sure you want to run ${script.name}?`;
+      const message =
+        typeof script.confirm === "string"
+          ? script.confirm
+          : defaultConfirmationMessage;
+
       // eslint-disable-next-line no-restricted-globals,no-alert
-      const confirmed = confirm(
-        script.confirm || `Are you sure you want to run ${script.name}?`
-      );
+      const confirmed = confirm(message);
       if (!confirmed) {
         return;
       }
