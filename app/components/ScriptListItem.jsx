@@ -10,6 +10,15 @@ const ScriptListItem = ({ script }) => {
 
   const handleRunCommandSubmit = async (event) => {
     event.preventDefault();
+    if (script.confirm) {
+      // eslint-disable-next-line no-restricted-globals,no-alert
+      const confirmed = confirm(
+        script.confirm || `Are you sure you want to run ${script.name}?`
+      );
+      if (!confirmed) {
+        return;
+      }
+    }
     const result = await run(script.id);
     setLastRun(result);
   };
