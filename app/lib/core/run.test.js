@@ -12,14 +12,22 @@ describe("run", () => {
     findScripts.mockImplementation(() => [
       { id: "echo.json", command: "./script.sh" },
     ]);
-    execa.mockImplementation(() => ({ all: "test output" }));
+    execa.mockImplementation(() => ({
+      all: "test output",
+      exitCode: 0,
+      failed: false,
+    }));
   });
 
   describe("Running a script from a script configuration file", () => {
     it("Returns the script output", async () => {
       const output = await run("echo.json");
 
-      expect(output).toEqual({ all: "test output" });
+      expect(output).toEqual({
+        output: "test output",
+        exitCode: 0,
+        failed: false,
+      });
     });
 
     it("Executes the command for the given script id", async () => {
@@ -28,6 +36,7 @@ describe("run", () => {
       expect(execa).toHaveBeenCalledWith("./script.sh", {
         all: true,
         shell: false,
+        timeout: 60000,
       });
     });
 
@@ -41,8 +50,36 @@ describe("run", () => {
       await run("echo.json");
 
       expect(logger.log).toHaveBeenCalledWith(
-        'Command ./script.sh finished {"all":"test output"}'
+        'Command ./script.sh finished {"all":"test output","exitCode":0,"failed":false}'
       );
+    });
+
+    it("Overrides default timeout when one is configured", async () => {
+      findScripts.mockImplementation(() => [
+        { id: "echo.json", command: "./script.sh", timeout: 1000 },
+      ]);
+
+      await run("echo.json");
+
+      expect(execa).toHaveBeenCalledWith("./script.sh", {
+        all: true,
+        shell: false,
+        timeout: 1000,
+      });
+    });
+
+    it("Uses default timeout when not configured", async () => {
+      findScripts.mockImplementation(() => [
+        { id: "echo.json", command: "./script.sh" },
+      ]);
+
+      await run("echo.json");
+
+      expect(execa).toHaveBeenCalledWith("./script.sh", {
+        all: true,
+        shell: false,
+        timeout: 60000,
+      });
     });
 
     describe.each([
@@ -68,6 +105,7 @@ describe("run", () => {
         expect(execa).toHaveBeenCalledWith("./script2.sh", {
           all: true,
           shell: expectedShell,
+          timeout: 60000,
         });
       });
     });

@@ -2,11 +2,17 @@ import execa from "execa";
 import logger from "../services/logger";
 import findScripts from "./find-scripts";
 
-const exec = async (command, { shell = false } = {}) => {
+const DEFAULT_TIMEOUT = 60000; // 1 minute
+
+const exec = async (
+  command,
+  { shell = false, timeout = DEFAULT_TIMEOUT } = {}
+) => {
   try {
     logger.log(`Running command ${command}`);
     const result = await execa(command, {
       all: true,
+      timeout,
       shell,
     });
     logger.log(`Command ${command} finished ${JSON.stringify(result)}`);
@@ -32,7 +38,10 @@ const run = async (scriptId) => {
     return `Script ${scriptId} has no command configuration`;
   }
 
-  return exec(script.command, { shell: !!script.shell });
+  return exec(script.command, {
+    shell: !!script.shell,
+    timeout: script.timeout,
+  });
 };
 
 export default run;
