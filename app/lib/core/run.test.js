@@ -21,9 +21,9 @@ describe("run", () => {
 
   describe("Running a script from a script configuration file", () => {
     it("Returns the script output", async () => {
-      const output = await run("echo.json");
+      const result = await run("echo.json");
 
-      expect(output).toEqual({
+      expect(result).toEqual({
         output: "test output",
         exitCode: 0,
         failed: false,
@@ -107,6 +107,27 @@ describe("run", () => {
           shell: expectedShell,
           timeout: 60000,
         });
+      });
+    });
+  });
+
+  describe("When script failes", () => {
+    it("Returns error details", async () => {
+      execa.mockImplementation(() => {
+        // eslint-disable-next-line no-throw-literal
+        throw {
+          message: "test output",
+          exitCode: 2,
+          failed: true,
+        };
+      });
+
+      const result = await run("echo.json");
+
+      expect(result).toEqual({
+        output: "test output",
+        exitCode: 2,
+        failed: true,
       });
     });
   });

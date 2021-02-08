@@ -48,7 +48,15 @@ const ScriptListItem = ({ script }) => {
           })}
         >
           <pre className="font-mono text-sm text-white overflow-auto max-h-96">
-            {lastRun.output}
+            <p>{lastRun.output}</p>
+            <p
+              className={cn({
+                "text-success": !lastRun.failed,
+                "text-error": lastRun.failed,
+              })}
+            >
+              {`Exit status code: ${lastRun.exitCode}`}
+            </p>
           </pre>
         </section>
       )}

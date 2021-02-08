@@ -20,7 +20,7 @@ const exec = async (
     return { exitCode, output, failed };
   } catch (error) {
     logger.error(`Command ${command} failed ${JSON.stringify(error)}`);
-    return { exitCode: null, output: error.message, failed: true };
+    return { exitCode: error.exitCode, output: error.message, failed: true };
   }
 };
 
