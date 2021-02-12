@@ -1,6 +1,11 @@
 #!/usr/bin/env node
-const npm = require("npm");
 const path = require("path");
+const execa = require("execa");
 
 process.chdir(path.join(__dirname, ".."));
-npm.load(() => npm.run("start"));
+
+execa("npm start", { shell: true }).catch((e) => {
+  // eslint-disable-next-line no-console
+  console.error(e);
+  process.exit(1);
+});
