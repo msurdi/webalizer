@@ -1,7 +1,7 @@
 import cn from "classnames";
 import React, { useState } from "react";
 import useRun from "../hooks/use-run";
-import Button from "./Button";
+import Button, { ButtonVariant } from "./Button";
 
 const ScriptListItem = ({ script }) => {
   const { run, isRunning } = useRun();
@@ -27,9 +27,11 @@ const ScriptListItem = ({ script }) => {
     setLastRun(result);
   };
 
+  const clear = () => setLastRun({});
+
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-between pr-1 flex-col lg:pr-8  lg:items-center lg:flex-row">
+    <div className="flex flex-col pr-1 lg:pr-4  ">
+      <div className="flex justify-between flex-col lg:items-center lg:flex-row">
         <section className="my-4 lg:my-2">
           <h1 className="font-bold">{script.name}</h1>
           <p>{script.description}</p>
@@ -41,23 +43,34 @@ const ScriptListItem = ({ script }) => {
         </form>
       </div>
       {lastRun.output && (
-        <section
-          className={cn("my-4 bg-black rounded py-4 px-2", {
-            "border-4 border-error": lastRun.failed,
-            "border-4 border-success": !lastRun.failed,
-          })}
-        >
-          <pre className="font-mono text-sm text-white overflow-auto max-h-96">
-            <p>{lastRun.output}</p>
-            <p
-              className={cn({
-                "text-success": !lastRun.failed,
-                "text-error": lastRun.failed,
-              })}
+        <section>
+          <div
+            className={cn("my-4 bg-black rounded py-4 px-2", {
+              "border-4 border-error": lastRun.failed,
+              "border-4 border-success": !lastRun.failed,
+            })}
+          >
+            <pre className="font-mono text-sm text-white overflow-auto max-h-96">
+              <p>{lastRun.output}</p>
+              <p
+                className={cn({
+                  "text-success": !lastRun.failed,
+                  "text-error": lastRun.failed,
+                })}
+              >
+                {`Exit status code: ${lastRun.exitCode}`}
+              </p>
+            </pre>
+          </div>
+          <div className="flex">
+            <Button
+              variant={ButtonVariant.secondary}
+              className="ml-auto max-w-min"
+              onClick={clear}
             >
-              {`Exit status code: ${lastRun.exitCode}`}
-            </p>
-          </pre>
+              Clear
+            </Button>
+          </div>
         </section>
       )}
     </div>
