@@ -58,9 +58,7 @@ const SignInPage = () => {
             name="password"
             type="password"
           />
-          <Button isLoading={isLoading} type="submit">
-            Sign in
-          </Button>
+          <Button isLoading={isLoading}>Sign in</Button>
         </form>
       </div>
     </Layout>
