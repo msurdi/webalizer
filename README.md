@@ -37,7 +37,7 @@ create for example at `~/.webalizer/start_vm.json`:
   "name": "Start windows VM",
   "description": "Starts the windows VM",
   "button": "Start",
-  "shell": "true",
+  "shell": true,
   "confirm": "Are you sure you want to start this VM?",
   "timeout": 5000
 }
