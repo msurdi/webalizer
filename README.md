@@ -15,7 +15,7 @@ project.
 
 Here is a screenshot:
 
-![Screenshot](/docs/screenshot.png?raw=true)
+![Screenshot](docs/screenshot.png?raw=true)
 
 ## Installation
 
