@@ -1,6 +1,6 @@
 {
   "name": "webalizer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "",
   "license": "MIT",
   "bin": {
-    "webalizer": "./bin/webalizer.js"
+    "webalizer": "bin/webalizer.js"
   },
   "files": [
     "app/.next/**",
