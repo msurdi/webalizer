@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev app",
     "build": "next build app",
+    "prepack": "npm run build",
     "start": "next start -p ${PORT:-3000} -H ${ADDRESS:-127.0.0.1} app",
     "test": "jest app/**",
     "test:watch": "jest --watch app/**"
