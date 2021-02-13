@@ -17,7 +17,7 @@ Here is a screenshot:
 
 ![Screenshot](/docs/screenshot.png?raw=true)
 
-## Installation
+## Installation
 
 Ensure you have a recent version of node and npm, then:
 
