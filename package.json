@@ -1,8 +1,17 @@
 {
   "name": "webalizer",
   "version": "0.2.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Web interface for running server commands and scripts",
+  "keywords": [
+    "web",
+    "interface",
+    "ui",
+    "run",
+    "scripts",
+    "commands",
+    "shell",
+    "scripts"
+  ],
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev app",
     "build": "next build app",
@@ -11,7 +20,20 @@
     "test": "jest app/**",
     "test:watch": "jest --watch app/**"
   },
-  "author": "",
+  "author": {
+    "email": "matiassurdi@gmail.com",
+    "name": "Matías Surdi",
+    "url": "https://github.com/msurdi"
+  },
+  "homepage": "https://github.com/msurdi/webalizer",
+  "bugs": {
+    "email": "matiassurdi@gmail.com",
+    "url": "https://github.com/msurdi/webalizer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/msurdi/webalizer.git"
+  },
   "license": "MIT",
   "bin": {
     "webalizer": "bin/webalizer.js"
