@@ -1,4 +1,4 @@
-import { fixturesRoot } from "../../../test/utils";
+import { fixturesRoot } from "../../../test/config";
 import serverRuntimeConfig from "../server-runtime-config";
 import findScripts from "./find-scripts";
 
