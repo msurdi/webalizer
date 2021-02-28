@@ -1,4 +1,4 @@
-import { fixturesRoot } from "../../../test/config";
+import config from "../../../test/config";
 import serverRuntimeConfig from "../server-runtime-config";
 import findScripts from "./find-scripts";
 
@@ -8,7 +8,7 @@ describe("find-script", () => {
   let scripts;
 
   beforeAll(async () => {
-    serverRuntimeConfig.scriptsRoot = `${fixturesRoot}/configs`;
+    serverRuntimeConfig.scriptsRoot = `${config.fixturesRoot}/configs`;
     scripts = await findScripts();
   });
 
