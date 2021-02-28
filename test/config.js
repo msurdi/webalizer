@@ -8,5 +8,6 @@ const config = {
   baseUrl: process.env.BASE_URL || `http://localhost:${port}`,
   username: process.env.USERNAME || "test_user",
   password: process.env.PASSWORD || "test_password",
+  headless: process.env.HEADLESS === "true",
 };
 export default config;

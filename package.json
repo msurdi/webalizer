@@ -18,8 +18,8 @@
     "prepack": "npm run build",
     "start": "next start -p ${PORT:-3000} -H ${ADDRESS:-127.0.0.1} app",
     "test": "jest app/**",
-    "test:acceptance": "run-s build test:acceptance:start ",
-    "test:acceptance:start": "BASE_URL=http://localhost:3001 USERNAME=test_user PASSWORD=test_password PORT=3001 NEXTAUTH_URL=http://localhost:3001 run-p -r start test:acceptance:run",
+    "test:acceptance": "HEADLESS=true BASE_URL=http://localhost:3001 USERNAME=test_user PASSWORD=test_password PORT=3001 NEXTAUTH_URL=http://localhost:3001 run-s build test:acceptance:start ",
+    "test:acceptance:start": "run-p -r start test:acceptance:run",
     "test:acceptance:run": "jest test/acceptance/**",
     "test:watch": "jest --watch app/**"
   },
