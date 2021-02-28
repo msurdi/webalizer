@@ -1,4 +1,4 @@
-import { getSession, useSession } from "next-auth/client";
+import { getSession } from "next-auth/client";
 import Link from "next/link";
 import React from "react";
 import Layout from "../components/Layout";
@@ -7,11 +7,7 @@ import findScripts from "../lib/core/find-scripts";
 import publicRuntimeConfig from "../lib/public-runtime-config";
 import urls from "../lib/urls";
 
-const IndexPage = ({ scripts, isAuthEnabled }) => {
-  const [session, loading] = useSession();
-
-  if (typeof window !== "undefined" && loading) return null;
-
+const IndexPage = ({ scripts, session, isAuthEnabled }) => {
   if (isAuthEnabled && !session) {
     return (
       <Layout>
