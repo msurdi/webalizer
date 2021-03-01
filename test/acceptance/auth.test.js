@@ -1,12 +1,12 @@
 import config from "../config";
-import getPage from "../helpers/page";
+import { getAnonynousPage } from "../helpers/browser";
 
 describe("Authentication", () => {
   /** @type {import('playwright').Page} */
   let page;
 
   beforeAll(async () => {
-    page = await getPage();
+    page = await getAnonynousPage();
   });
 
   it("Asks user to go to the login screen", async () => {

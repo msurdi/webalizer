@@ -1,7 +1,7 @@
 import playwright from "playwright";
 import config from "../config";
 
-const getPage = async () => {
+export const getAnonynousPage = async () => {
   const browser = await playwright.chromium.launch({
     headless: config.headless,
   });
@@ -11,4 +11,8 @@ const getPage = async () => {
   return page;
 };
 
-export default getPage;
+export const getLoggedInPage = async () => {
+  const page = await getAnonynousPage();
+  // TODO: login
+  return page;
+};
