@@ -1,12 +1,8 @@
 import config from "../config";
-import { getAnonynousPage } from "../helpers/browser";
 
 describe("Authentication", () => {
-  /** @type {import('playwright').Page} */
-  let page;
-
   beforeAll(async () => {
-    page = await getAnonynousPage();
+    await page.goto(config.baseUrl);
   });
 
   it("Asks user to go to the login screen", async () => {
