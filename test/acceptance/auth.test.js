@@ -1,22 +1,12 @@
-import playwright from "playwright";
 import config from "../config";
+import getPage from "../helpers/page";
 
 describe("Authentication", () => {
-  /** @type {import('playwright').Browser} */
-  let browser;
-
   /** @type {import('playwright').Page} */
   let page;
 
   beforeAll(async () => {
-    browser = await playwright.chromium.launch({ headless: config.headless });
-    const context = await browser.newContext();
-    page = await context.newPage();
-    await page.goto(config.baseUrl);
-  });
-
-  afterAll(async () => {
-    await browser.close();
+    page = await getPage();
   });
 
   it("Asks user to go to the login screen", async () => {
