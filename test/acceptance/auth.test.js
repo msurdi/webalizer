@@ -5,15 +5,12 @@ describe("Authentication", () => {
   /** @type {import('playwright').Browser} */
   let browser;
 
-  /** @type {import('playwright').BrowserContext} */
-  let context;
-
   /** @type {import('playwright').Page} */
   let page;
 
   beforeAll(async () => {
     browser = await playwright.chromium.launch({ headless: config.headless });
-    context = await browser.newContext();
+    const context = await browser.newContext();
     page = await context.newPage();
     await page.goto(config.baseUrl);
   });
