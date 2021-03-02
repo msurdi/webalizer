@@ -29,9 +29,9 @@ describe("find-script", () => {
       expect(scriptConfig).toBeTruthy();
       expect(scriptConfig).toEqual({
         command: "echo YES",
-        description: "Echo something",
+        description: "Echo description text",
         id: "echo.json",
-        name: "Echo",
+        name: "Echo command",
       });
     });
   });
@@ -42,8 +42,8 @@ describe("find-script", () => {
       expect(scriptConfig).toBeTruthy();
       expect(scriptConfig).toEqual({
         id: "run.json",
-        name: "run",
-        description: "Run a script",
+        name: "Run command",
+        description: "Run description",
         command: "./script.sh",
       });
     });

@@ -9,13 +9,10 @@ describe("Authentication", () => {
 
   it("Should list all the commands available in fixtures", async () => {
     await page.goto(config.baseUrl);
-    expect(await page.$("text='Echo'")).toBeDefined();
-    expect(await page.$("text='Echo a word to a file'")).toBeDefined();
+    await expect(page).toHaveText("Echo command");
+    await expect(page).toHaveText("Echo description text");
 
-    expect(await page.$("text='Start windows VM'")).toBeDefined();
-    expect(await page.$("text='Starts the windows VM'")).toBeDefined();
-
-    expect(await page.$("text='Stop windows VM'")).toBeDefined();
-    expect(await page.$("text='Stops the windows CM'")).toBeDefined();
+    await expect(page).toHaveText("Run command");
+    await expect(page).toHaveText("Run description");
   });
 });

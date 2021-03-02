@@ -1,5 +1,5 @@
 {
-  "name": "Echo",
-  "description": "Echo something",
-  "command": "echo YES"
+  "command": "echo YES",
+  "description": "Echo description text",
+  "name": "Echo command"
 }
