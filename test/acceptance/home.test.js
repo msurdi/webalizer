@@ -7,7 +7,7 @@ describe("Authentication", () => {
     await page.goto(config.baseUrl);
   });
 
-  it("Should list all the commands available in fixtures", async () => {
+  it("Lists all the commands available in fixtures", async () => {
     await page.goto(config.baseUrl);
     await expect(page).toHaveText("Echo command");
     await expect(page).toHaveText("Echo description text");
