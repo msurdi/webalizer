@@ -20,7 +20,7 @@
     "jest:acceptance": "PWDEBUG=1 USERNAME=dev PASSWORD=dev PORT=3000 jest -c jest.acceptance.config.js",
     "test": "run-s test:unit test:acceptance",
     "test:unit": "jest app/**",
-    "test:acceptance": "HEADLESS=true BASE_URL=http://localhost:3001 USERNAME=test_user PASSWORD=test_password PORT=3001 NEXTAUTH_URL=http://localhost:3001 run-s build test:acceptance:start ",
+    "test:acceptance": "HEADLESS=true SCRIPTS_ROOT=./test/fixtures/configs BASE_URL=http://localhost:3001 USERNAME=test_user PASSWORD=test_password PORT=3001 NEXTAUTH_URL=http://localhost:3001 run-s build test:acceptance:start",
     "test:acceptance:start": "run-p -r start test:acceptance:run",
     "test:acceptance:run": "jest -c jest.acceptance.config.js test/acceptance/**",
     "test:watch": "jest --watch app/**"
