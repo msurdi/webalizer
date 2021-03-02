@@ -16,7 +16,7 @@ describe("Authentication", () => {
     await page.fill("#password", "");
     await page.click("text='Sign in'");
 
-    expect(page).toHaveText("Oops...");
+    await expect(page).toHaveText("Oops...");
   });
 
   it("Does not log in with wrong username", async () => {
@@ -24,7 +24,7 @@ describe("Authentication", () => {
     await page.fill("#password", config.password);
     await page.click("text='Sign in'");
 
-    expect(page).toHaveText("Oops...");
+    await expect(page).toHaveText("Oops...");
   });
 
   it("Does not log in with wrong password", async () => {
@@ -32,15 +32,16 @@ describe("Authentication", () => {
     await page.fill("#password", "wrong");
     await page.click("text='Sign in'");
 
-    expect(page).toHaveText("Oops...");
+    await expect(page).toHaveText("Oops...");
   });
 
   it("Logs in", async () => {
     await page.fill("#username", config.username);
     await page.fill("#password", config.password);
     await page.click("text='Sign in'");
+    await page.waitForNavigation();
 
     expect(await page.url()).toMatch(`${config.baseUrl}/`);
-    expect(await page.$("text='Run'")).toBeDefined();
+    await expect(page).toHaveText("Run");
   });
 });
