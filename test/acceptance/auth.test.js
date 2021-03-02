@@ -11,6 +11,30 @@ describe("Authentication", () => {
     expect(await page.url()).toMatch(`${config.baseUrl}/auth`);
   });
 
+  it("Does not log in with with empty username and password", async () => {
+    await page.fill("#username", "");
+    await page.fill("#password", "");
+    await page.click("text='Sign in'");
+
+    expect(page).toHaveText("Oops...");
+  });
+
+  it("Does not log in with wrong username", async () => {
+    await page.fill("#username", "wrong");
+    await page.fill("#password", config.password);
+    await page.click("text='Sign in'");
+
+    expect(page).toHaveText("Oops...");
+  });
+
+  it("Does not log in with wrong password", async () => {
+    await page.fill("#username", config.username);
+    await page.fill("#password", "wrong");
+    await page.click("text='Sign in'");
+
+    expect(page).toHaveText("Oops...");
+  });
+
   it("Logs in", async () => {
     await page.fill("#username", config.username);
     await page.fill("#password", config.password);
