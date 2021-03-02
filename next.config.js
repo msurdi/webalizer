@@ -1,10 +1,10 @@
 const os = require("os");
+const path = require("path");
 
 module.exports = {
   serverRuntimeConfig: {
-    scriptsRoot: (process.env.SCRIPTS_ROOT || "~/.webalizer").replace(
-      "~",
-      os.homedir
+    scriptsRoot: path.resolve(
+      (process.env.SCRIPTS_ROOT || "~/.webalizer").replace("~", os.homedir)
     ),
     username: process.env.USERNAME,
     password: process.env.PASSWORD,
