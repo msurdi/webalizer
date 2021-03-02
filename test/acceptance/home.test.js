@@ -11,6 +11,7 @@ describe("Authentication", () => {
     await page.goto(config.baseUrl);
     await expect(page).toHaveText("Echo command");
     await expect(page).toHaveText("Echo description text");
+    await expect(page).toHaveText("Echo button");
 
     await expect(page).toHaveText("Run command");
     await expect(page).toHaveText("Run description");

@@ -30,6 +30,8 @@ describe("find-script", () => {
       expect(scriptConfig).toEqual({
         command: "echo YES",
         description: "Echo description text",
+        button: "Echo button",
+        confirm: "Run echo?",
         id: "echo.json",
         name: "Echo command",
       });
