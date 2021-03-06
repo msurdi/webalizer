@@ -3,14 +3,8 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    "jest/globals": true,
   },
-  extends: [
-    "plugin:react/recommended",
-    "airbnb",
-    "prettier",
-    "plugin:jest/recommended",
-  ],
+  extends: ["plugin:react/recommended", "airbnb", "prettier"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,9 +12,5 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "prettier", "jest"],
-  rules: {
-    "react/prop-types": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-  },
+  plugins: ["react", "prettier"],
 };

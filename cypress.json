@@ -1,0 +1,16 @@
+{
+  "baseUrl": "http://localhost:3001",
+  "componentFolder": "acceptance/component",
+  "downloadsFolder": "acceptance/downloads",
+  "env": {},
+  "fixturesFolder": "acceptance/fixtures",
+  "integrationFolder": "acceptance/tests",
+  "pluginsFile": "acceptance/plugins",
+  "retries": {
+    "openMode": 1,
+    "runMode": 2
+  },
+  "screenshotsFoldere": "acceptance/screenshots",
+  "supportFile": "acceptance/support",
+  "videosFolder": "acceptance/videos"
+}
