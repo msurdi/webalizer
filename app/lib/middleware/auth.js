@@ -1,7 +1,8 @@
 import { getSession } from "next-auth/client";
-import publicRuntimeConfig from "../public-runtime-config";
+import getConfig from "next/config";
 
 export default async (req, res, next) => {
+  const { publicRuntimeConfig } = getConfig();
   const { isAuthEnabled } = publicRuntimeConfig;
 
   if (!isAuthEnabled) {

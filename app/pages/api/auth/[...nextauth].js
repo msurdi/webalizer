@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
-import serverRuntimeConfig from "../../../lib/server-runtime-config";
+import getConfig from "next/config";
 
 const options = {
   pages: {
@@ -14,6 +14,7 @@ const options = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
+        const { serverRuntimeConfig } = getConfig();
         const { username, password } = credentials;
 
         if (

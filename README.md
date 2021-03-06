@@ -103,7 +103,7 @@ npm install
 npm run dev
 ```
 
-You can optionally customize development time env vars by doing `cp app/.env.example app/.env` and customizing the values in `app/.env`
+You can optionally customize development time env vars by doing `cp .env.example .env` and customizing the values in `.env`
 
 There are not many tests yet, as most of the testing is being done manually as I'm the only user and I use it on a daily basis.
 

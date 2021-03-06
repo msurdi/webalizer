@@ -1,9 +1,10 @@
 import glob from "fast-glob";
 import fs from "fs-extra";
+import getConfig from "next/config";
 import path from "path";
-import serverRuntimeConfig from "../server-runtime-config";
 
 const loadConfiguration = async (configurationFile) => {
+  const { serverRuntimeConfig } = getConfig();
   const configurationFileAbsolutePath = path.join(
     serverRuntimeConfig.scriptsRoot,
     configurationFile.path
@@ -22,6 +23,7 @@ const loadConfiguration = async (configurationFile) => {
 };
 
 const findScripts = async () => {
+  const { serverRuntimeConfig } = getConfig();
   const scriptConfigurationFiles = await glob("**/*.json", {
     objectMode: true,
     cwd: serverRuntimeConfig.scriptsRoot,

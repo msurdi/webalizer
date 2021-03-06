@@ -1,10 +1,10 @@
 import { getSession } from "next-auth/client";
+import getConfig from "next/config";
 import Link from "next/link";
 import React from "react";
 import Layout from "../components/Layout";
 import ScriptList from "../components/ScriptList";
 import findScripts from "../lib/core/find-scripts";
-import publicRuntimeConfig from "../lib/public-runtime-config";
 import urls from "../lib/urls";
 
 const IndexPage = ({ scripts, session, isAuthEnabled }) => {
@@ -28,6 +28,7 @@ const IndexPage = ({ scripts, session, isAuthEnabled }) => {
 };
 
 export const getServerSideProps = async (context) => {
+  const { publicRuntimeConfig } = getConfig();
   const { isAuthEnabled } = publicRuntimeConfig;
   const session = await getSession(context);
 

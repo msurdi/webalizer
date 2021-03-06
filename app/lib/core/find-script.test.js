@@ -1,14 +1,16 @@
+import getConfig from "next/config";
 import config from "../../../test/config";
-import serverRuntimeConfig from "../server-runtime-config";
 import findScripts from "./find-scripts";
 
-jest.mock("../server-runtime-config", () => jest.fn());
+jest.mock("next/config");
 
 describe("find-script", () => {
   let scripts;
 
   beforeAll(async () => {
-    serverRuntimeConfig.scriptsRoot = `${config.fixturesRoot}/configs`;
+    getConfig.mockImplementation(() => ({
+      serverRuntimeConfig: { scriptsRoot: `${config.fixturesRoot}/configs` },
+    }));
     scripts = await findScripts();
   });
 
