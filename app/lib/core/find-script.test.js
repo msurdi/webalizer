@@ -1,5 +1,4 @@
 import getConfig from "next/config";
-import config from "../../../test/config";
 import findScripts from "./find-scripts";
 
 jest.mock("next/config");
@@ -9,7 +8,7 @@ describe("find-script", () => {
 
   beforeAll(async () => {
     getConfig.mockImplementation(() => ({
-      serverRuntimeConfig: { scriptsRoot: `${config.fixturesRoot}/configs` },
+      serverRuntimeConfig: { scriptsRoot: "fixtures/configs" },
     }));
     scripts = await findScripts();
   });

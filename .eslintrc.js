@@ -10,7 +10,6 @@ module.exports = {
     "airbnb",
     "prettier",
     "plugin:jest/recommended",
-    "plugin:jest-playwright/recommended",
   ],
   parserOptions: {
     ecmaFeatures: {
