@@ -28,8 +28,9 @@ npm i -g webalizer
 ## Configuration
 
 By default, webalizer will look for command definition files at
-`~/.webalizer/*.json`, here is an example configuration file which you can
-create for example at `~/.webalizer/start_vm.json`:
+`~/.webalizer/*.json` where each `.json` file represents the configuration for a
+single command in the web interface. Here is an example configuration file which
+you can create for example at `~/.webalizer/start_vm.json`:
 
 ```json
 {
@@ -103,9 +104,13 @@ npm install
 npm run dev
 ```
 
-You can optionally customize development time env vars by doing `cp .env.example .env` and customizing the values in `.env`
+You can optionally customize development time env vars by doing
 
-There are not many tests yet, as most of the testing is being done manually as I'm the only user and I use it on a daily basis.
+```sh
+cp .env.example .env
+```
+
+ and customizing the values in `.env`
 
 To run tests:
 
