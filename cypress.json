@@ -8,7 +8,7 @@
   "pluginsFile": "acceptance/plugins",
   "retries": {
     "openMode": 1,
-    "runMode": 2
+    "runMode": 1
   },
   "screenshotsFoldere": "acceptance/screenshots",
   "supportFile": "acceptance/support",
