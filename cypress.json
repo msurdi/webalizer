@@ -10,7 +10,7 @@
     "openMode": 1,
     "runMode": 1
   },
-  "screenshotsFoldere": "acceptance/screenshots",
+  "screenshotsFolder": "acceptance/screenshots",
   "supportFile": "acceptance/support",
   "videosFolder": "acceptance/videos"
 }
