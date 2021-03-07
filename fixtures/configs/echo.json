@@ -1,7 +1,8 @@
 {
   "button": "Echo button",
-  "command": "echo YES",
+  "command": "echo this is the command output",
   "confirm": "Run echo?",
   "description": "Echo description text",
-  "name": "Echo command"
+  "name": "Echo command",
+  "shell": true
 }

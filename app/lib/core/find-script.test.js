@@ -29,12 +29,13 @@ describe("find-script", () => {
       const scriptConfig = scripts.find((script) => script.id === "echo.json");
       expect(scriptConfig).toBeTruthy();
       expect(scriptConfig).toEqual({
-        command: "echo YES",
+        command: "echo this is the command output",
         description: "Echo description text",
         button: "Echo button",
         confirm: "Run echo?",
         id: "echo.json",
         name: "Echo command",
+        shell: true,
       });
     });
   });
