@@ -18,7 +18,7 @@
     "build": "next build app",
     "prepack": "npm run build",
     "start": "next start -p ${PORT:-3000} -H ${ADDRESS:-127.0.0.1} app",
-    "start:acceptance": "NEXTAUTH_URL=http://localhost:3001/ USERNAME=testuser PASSWORD=testpassword PORT=3001 run-s build start",
+    "start:acceptance": "SCRIPTS_ROOT=fixtures/configs NEXTAUTH_URL=http://localhost:3001/ USERNAME=testuser PASSWORD=testpassword PORT=3001 run-s build start",
     "test": "run-s test:unit",
     "test:unit": "jest app/**",
     "test:watch": "jest --watch app/**"
