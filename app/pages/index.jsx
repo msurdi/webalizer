@@ -27,6 +27,14 @@ const IndexPage = ({ scripts, session, isAuthEnabled }) => {
   );
 };
 
+const getScriptBasicInfo = ({ id, name, description, button, confirm }) => ({
+  id,
+  name,
+  description,
+  button,
+  confirm,
+});
+
 export const getServerSideProps = async (context) => {
   const { publicRuntimeConfig } = getConfig();
   const { isAuthEnabled } = publicRuntimeConfig;
@@ -35,9 +43,9 @@ export const getServerSideProps = async (context) => {
   if (isAuthEnabled && !session) {
     return { props: { session, isAuthEnabled } };
   }
-
   const scripts = await findScripts();
-  return { props: { scripts, session, isAuthEnabled } };
+  const scriptsBasicInfo = scripts.map(getScriptBasicInfo);
+  return { props: { scripts: scriptsBasicInfo, session, isAuthEnabled } };
 };
 
 export default IndexPage;
