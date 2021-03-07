@@ -2,3 +2,5 @@
 /app/.next
 /*.tgz
 /.env
+/acceptance/videos
+/acceptance/screenshots
