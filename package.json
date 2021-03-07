@@ -19,7 +19,9 @@
     "prepack": "npm run build",
     "start": "next start -p ${PORT:-3000} -H ${ADDRESS:-127.0.0.1} app",
     "start:acceptance": "SCRIPTS_ROOT=fixtures/configs NEXTAUTH_URL=http://localhost:3001/ USERNAME=testuser PASSWORD=testpassword PORT=3001 run-s build start",
-    "test": "run-s test:unit",
+    "test:acceptance": "run-p -r start:acceptance cypress:run",
+    "cypress:run": "cypress run",
+    "test": "run-s test:unit test:acceptance",
     "test:unit": "jest app/**",
     "test:watch": "jest --watch app/**"
   },
