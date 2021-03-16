@@ -55,6 +55,7 @@
     "npm": ">=6"
   },
   "devDependencies": {
+    "@tailwindcss/jit": "^0.1.1",
     "@types/jest": "^26.0.20",
     "babel-jest": "^26.6.3",
     "cypress": "^6.6.0",
