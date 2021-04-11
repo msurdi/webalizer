@@ -12,5 +12,6 @@
   },
   "screenshotsFolder": "acceptance/screenshots",
   "supportFile": "acceptance/support",
+  "video": false,
   "videosFolder": "acceptance/videos"
 }
