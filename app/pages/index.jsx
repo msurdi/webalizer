@@ -5,6 +5,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import ScriptList from "../components/ScriptList";
 import findScripts from "../lib/core/find-scripts";
+import serialize from "../lib/serialize";
 import urls from "../lib/urls";
 
 const IndexPage = ({ scripts, session, isAuthEnabled }) => {
@@ -45,7 +46,9 @@ export const getServerSideProps = async (context) => {
   }
   const scripts = await findScripts();
   const scriptsBasicInfo = scripts.map(getScriptBasicInfo);
-  return { props: { scripts: scriptsBasicInfo, session, isAuthEnabled } };
+  return {
+    props: serialize({ scripts: scriptsBasicInfo, session, isAuthEnabled }),
+  };
 };
 
 export default IndexPage;
