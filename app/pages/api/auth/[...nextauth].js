@@ -13,6 +13,7 @@ const options = {
         username: { label: "Username", type: "text", placeholder: "" },
         password: { label: "Password", type: "password" },
       },
+      protection: [],
       authorize: async (credentials) => {
         const { serverRuntimeConfig } = getConfig();
         const { username, password } = credentials;
@@ -21,9 +22,9 @@ const options = {
           username === serverRuntimeConfig.username &&
           password === serverRuntimeConfig.password
         ) {
-          return Promise.resolve({ username });
+          return { username };
         }
-        return Promise.resolve(null);
+        return null;
       },
     }),
   ],
