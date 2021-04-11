@@ -2,6 +2,9 @@ const os = require("os");
 const path = require("path");
 
 module.exports = {
+  future: {
+    webpack5: true,
+  },
   serverRuntimeConfig: {
     scriptsRoot: path.resolve(
       (process.env.SCRIPTS_ROOT || "~/.webalizer").replace("~", os.homedir)
